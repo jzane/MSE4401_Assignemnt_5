@@ -1,4 +1,4 @@
-function KinEnergy = kineticPRP(q,qdot,  Jw, Jv)
+function [KinEnergy, D] = kineticPRP(q,qdot,  Jw, Jv)
 % calcuates the kinetric energy of the manipulator
 % calculate the linear kinetic energy first
 
@@ -51,5 +51,8 @@ RotKin = [Jwc1T*R1*I_1*R1T*Jwc1 + Jwc2T*R2*I_2*R2T*Jwc2 + Jwc3T*R3*I_3*R3T*Jwc3]
 K_2 = 0.5*transpose(qdot)*RotKin*qdot;
 
 KinEnergy = K_1 + K_2;
+
+% return the D matrix
+D = Linkin + RotKin;
 
 end
