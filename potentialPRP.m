@@ -4,7 +4,7 @@ function G = potentialPRP(q)
     % 
     % define the gravitational constant, g
     g = 9.81;
-
+    
     % Define mass
     m = [0.3, 0.3 0.3];
     
@@ -14,18 +14,25 @@ function G = potentialPRP(q)
     % Calculate the joint origins
     [T01, T02, T03] = fkinPRP(q);
 
-    O1 = T01(1:3,4);
-    O2 = T02(1:3,4);
-    O3 = T03(1:3,4);
+    % extract the z components of each origin
+    O(1) = T01(3,4);
+    O(2) = T02(3,4);
+    O(3) = T03(3,4);
+
     
     for i = 1:3
-        P_temp(i, :) = m(i)*Z; % multiply by unit vectorto get rid of the other directions (x and y)
+        P_temp(i,1) = m(i)*O(i); % only need unit vector
     end
     
     % concatenate 
     
-    P = P_temp(1,:) +  P_temp(2,:) +  P_temp(3,:);
+    P = P_temp(1,1) +  P_temp(2,1) +  P_temp(3,1);
 
-
+    for j = 1:3
+        % CURRENT PROBLEM:
+        % Does not differentiate properly with respect to q1
+       G(i,1) = diff(P,q(i)); 
+       
+    end
 
 end

@@ -6,15 +6,10 @@ m1 = 0.3;
 m2 = 0.3;
 m3 = 0.3; % 0.3 kg
 
+Jvc1 = zeros(3);
+Jvc2 = zeros(3);
+Jvc3 = zeros(3);
 
-% The symbolic version
-Jvc1 = sym(zeros(3));
-Jvc2 = sym(zeros(3));
-Jvc3 = sym(zeros(3));
-
-Jwc1 = sym(zeros(3));
-Jwc2 = sym(zeros(3));
-Jwc3 = sym(zeros(3));
 
 
 Jvc1(:,1) = Jv(:,1);
@@ -25,9 +20,9 @@ Jvc1T = transpose(Jvc1);
 Jvc2T = transpose(Jvc2);
 Jvc3T = transpose(Jvc3);
 
-Jwc1(:,1) = Jw(:,1);
-Jwc2(:,1:2) = Jw(:,1:2);
-Jwc3 = Jw;
+Jwc1 = Jw(:,1);
+Jwc2 = Jw(:,2);
+Jwc3 = Jw(:,3);
 
 Jwc1T = transpose(Jwc1);
 Jwc2T = transpose(Jwc2);

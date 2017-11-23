@@ -1,0 +1,5 @@
+q = sym('q', [1 3]);
+qDot = sym('q.', [1 3]);
+qDotDot = sym('q..', [1 3]);
+
+
