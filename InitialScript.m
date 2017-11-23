@@ -1,5 +1,6 @@
-A = sym('a', [1 7]);
+q = sym('q', [1 3]);
 
-fkinreturn_sym = fkinPRP(A);
+fkinreturn_sym = fkinPRP(q);
 
-jacob_sym = jacobPRP(A)
+jacob_sym = jacobPRP(q);
+
